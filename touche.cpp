@@ -10,39 +10,40 @@ Touche::Touche()
 Touche::Touche(Note *note){
     this->note = note;
     if(note->getNom() == A && note->getAlteration() == 1){
-        this->setText("Do");
-    }
-    else if(note->getNom() == B && note->getAlteration() == 1){
-        this->setText("Re");
-    }
-    else if(note->getNom() == C && note->getAlteration() == 1){
-        this->setText("Mi");
-    }
-    else if(note->getNom() == D && note->getAlteration() == 1){
-        this->setText("Fa");
-    }
-    else if(note->getNom() == E && note->getAlteration() == 1){
-        this->setText("Sol");
-    }
-    else if(note->getNom() == F && note->getAlteration() == 1){
         this->setText("La");
     }
-    else if(note->getNom() == G && note->getAlteration() == 1){
+    else if(note->getNom() == B && note->getAlteration() == 1){
         this->setText("Si");
     }
-    else if(note->getNom() == A && note->getAlteration() == 2){
+    else if(note->getNom() == C && note->getAlteration() == 1){
+        this->setText("Do");
+    }
+    else if(note->getNom() == D && note->getAlteration() == 1){
+        this->setText("Re");
+    }
+    else if(note->getNom() == E && note->getAlteration() == 1){
+        this->setText("Mi");
+    }
+    else if(note->getNom() == F && note->getAlteration() == 1){
+        this->setText("Fa");
+    }
+    else if(note->getNom() == G && note->getAlteration() == 1){
+        this->setText("Sol");
+    }
+
+    else if(note->getNom() == C && note->getAlteration() == 2){
         this->setText("Do#");
     }
-    else if(note->getNom() == B && note->getAlteration() == 2){
+    else if(note->getNom() == D && note->getAlteration() == 2){
         this->setText("Re#");
     }
-    else if(note->getNom() == D && note->getAlteration() == 2){
+    else if(note->getNom() == F && note->getAlteration() == 2){
         this->setText("Fa#");
     }
-    else if(note->getNom() == E && note->getAlteration() == 2){
+    else if(note->getNom() == G && note->getAlteration() == 2){
         this->setText("Sol#");
     }
-    else if(note->getNom() == F && note->getAlteration() == 2){
+    else if(note->getNom() == A && note->getAlteration() == 2){
         this->setText("La#");
     }
 
