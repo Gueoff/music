@@ -1,0 +1,96 @@
+#include "touche.h"
+
+Touche::Touche()
+{
+    this->setMinimumSize(30,70);
+    this->setMaximumSize(40,80);
+
+}
+
+Touche::Touche(Note *note){
+    this->note = note;
+    if(note->getNom() == A && note->getAlteration() == 1){
+        this->setText("Do");
+    }
+    else if(note->getNom() == B && note->getAlteration() == 1){
+        this->setText("Re");
+    }
+    else if(note->getNom() == C && note->getAlteration() == 1){
+        this->setText("Mi");
+    }
+    else if(note->getNom() == D && note->getAlteration() == 1){
+        this->setText("Fa");
+    }
+    else if(note->getNom() == E && note->getAlteration() == 1){
+        this->setText("Sol");
+    }
+    else if(note->getNom() == F && note->getAlteration() == 1){
+        this->setText("La");
+    }
+    else if(note->getNom() == G && note->getAlteration() == 1){
+        this->setText("Si");
+    }
+    else if(note->getNom() == A && note->getAlteration() == 2){
+        this->setText("Do#");
+    }
+    else if(note->getNom() == B && note->getAlteration() == 2){
+        this->setText("Re#");
+    }
+    else if(note->getNom() == D && note->getAlteration() == 2){
+        this->setText("Fa#");
+    }
+    else if(note->getNom() == E && note->getAlteration() == 2){
+        this->setText("Sol#");
+    }
+    else if(note->getNom() == F && note->getAlteration() == 2){
+        this->setText("La#");
+    }
+
+
+
+    //Blanches
+    if(note->getAlteration() == 1){
+       // this->setMinimumSize(25,70);
+       // this->setMaximumSize(35,80);
+
+        this->setStyleSheet ("QPushButton {"
+                                "background-color : white;"
+                                "border : 1px solid black;"
+                                "width:2%;"
+                                "height:100%;"
+                                "color:white;"
+                              "}"
+                            "QPushButton:hover {"
+                            "border: 1px solid rgba(0,0,0,20%);"
+                            "background-color: rgba(245,245,245,50%);"
+                            "color:black;"
+                            "}"
+                             );
+    }
+    //Noires
+    else if(note->getAlteration() == 2){
+       // this->setMinimumSize(12,50);
+        //this->setMaximumSize(15,55);
+
+        this->setStyleSheet ("QPushButton {"
+                                "position:absolute;"
+                                "top:0;"
+                                "background-color : black;"
+                                "border : 1px solid grey;"
+                                "width:2%;"
+                                "height:50%;"
+                                "color:black;"
+                              "}"
+                            "QPushButton:hover {"
+                            "border: 1px solid rgba(0,0,0,20%);"
+                            "background-color: rgba(10,10,10,50%);"
+                            "color:white;"
+                            "}"
+                             );
+
+
+
+    }
+
+}
+

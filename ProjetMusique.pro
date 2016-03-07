@@ -15,10 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     partition.cpp \
-    note.cpp
+    note.cpp \
+    clavier.cpp \
+    touche.cpp
 
 HEADERS  += mainwindow.h \
     partition.h \
-    note.h
+    note.h \
+    clavier.h \
+    touche.h
 
 FORMS    += mainwindow.ui

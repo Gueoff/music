@@ -17,8 +17,7 @@ class Partition : public QWidget
 private:
      QBrush brush;
      std::vector<Note> liste_notes;
-
-     void positionNote(Note);
+     void positionNote(Note *note);
 
 public:
     Partition();

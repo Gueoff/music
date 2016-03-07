@@ -17,17 +17,11 @@ void Partition::setBrush(const QBrush &brush)
 
 void Partition::paintEvent(QPaintEvent *)
 {
-
     afficherPortee();
-    Note n(A,1,2);
-    this->positionNote(n);
 }
 
 
-void Partition::positionNote(Note note){
-    if(note.getNom() == A){
-        note.afficherNote();
-    }
+void Partition::positionNote(Note *note){
 
 }
 
