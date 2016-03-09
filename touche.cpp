@@ -49,42 +49,40 @@ Touche::Touche(Note *note){
 
 
 
+
     //Blanches
     if(note->getAlteration() == 1){
-       // this->setMinimumSize(25,70);
-       // this->setMaximumSize(35,80);
-
         this->setStyleSheet ("QPushButton {"
                                 "background-color : white;"
                                 "border : 1px solid black;"
-                                "width:2%;"
+                                "width:4%;"
+                                "min-width:50px;"
                                 "height:100%;"
+                                "min-height:250px;"
                                 "color:white;"
+                                "text-align: bottom;"
                               "}"
                             "QPushButton:hover {"
                             "border: 1px solid rgba(0,0,0,20%);"
-                            "background-color: rgba(245,245,245,50%);"
                             "color:black;"
                             "}"
                              );
     }
+
     //Noires
     else if(note->getAlteration() == 2){
-       // this->setMinimumSize(12,50);
-        //this->setMaximumSize(15,55);
-
         this->setStyleSheet ("QPushButton {"
-                                "position:absolute;"
-                                "top:0;"
                                 "background-color : black;"
                                 "border : 1px solid grey;"
-                                "width:2%;"
+                                "width:4%;"
+                                "min-width:30px;"
                                 "height:50%;"
+                                "min-height:150px;"
                                 "color:black;"
+                                "text-align: bottom;"
                               "}"
                             "QPushButton:hover {"
                             "border: 1px solid rgba(0,0,0,20%);"
-                            "background-color: rgba(10,10,10,50%);"
                             "color:white;"
                             "}"
                              );

@@ -13,16 +13,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     partition.cpp \
     note.cpp \
     clavier.cpp \
-    touche.cpp
+    touche.cpp \
+    window.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     partition.h \
     note.h \
     clavier.h \
-    touche.h
+    touche.h \
+    window.h
 
 FORMS    += mainwindow.ui
