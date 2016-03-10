@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "clavier.h"
 #include "partition.h"
+#include "controleur.h"
 
 class Window : public QWidget
 {
@@ -11,6 +12,7 @@ class Window : public QWidget
 
 public:
     Window();
+    void handleButton();
 
 private slots:
 

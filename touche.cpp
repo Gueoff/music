@@ -9,6 +9,7 @@ Touche::Touche()
 
 Touche::Touche(Note *note){
     this->note = note;
+
     if(note->getNom() == A && note->getAlteration() == 1){
         this->setText("La");
     }
@@ -87,9 +88,9 @@ Touche::Touche(Note *note){
                             "}"
                              );
 
-
-
     }
 
 }
+
+
 

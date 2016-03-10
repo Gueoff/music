@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sons/Do#1.wav</file>
+        <file>sons/Do#2.wav</file>
+        <file>sons/Do1.wav</file>
+        <file>sons/Do2.wav</file>
+        <file>sons/Fa#1.wav</file>
+        <file>sons/Fa#2.wav</file>
+        <file>sons/Fa1.wav</file>
+        <file>sons/Fa2.wav</file>
+        <file>sons/La#1.wav</file>
+        <file>sons/La#2.wav</file>
+        <file>sons/La1.wav</file>
+        <file>sons/La2.wav</file>
+        <file>sons/Mi1.wav</file>
+        <file>sons/Mi2.wav</file>
+        <file>sons/Re#1.wav</file>
+        <file>sons/Re#2.wav</file>
+        <file>sons/Re1.wav</file>
+        <file>sons/Re2.wav</file>
+        <file>sons/Si1.wav</file>
+        <file>sons/Si2.wav</file>
+        <file>sons/Sol#1.wav</file>
+        <file>sons/Sol#2.wav</file>
+        <file>sons/Sol1.wav</file>
+        <file>sons/Sol2.wav</file>
+    </qresource>
+</RCC>

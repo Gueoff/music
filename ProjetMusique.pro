@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = ProjetMusique
 TEMPLATE = app
@@ -17,13 +17,20 @@ SOURCES += main.cpp\
     note.cpp \
     clavier.cpp \
     touche.cpp \
-    window.cpp
+    window.cpp \
+    controleur.cpp
 
 HEADERS  += \
     partition.h \
     note.h \
     clavier.h \
     touche.h \
-    window.h
+    window.h \
+    controleur.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    son.qrc
+
+DISTFILES += \
