@@ -1,0 +1,13 @@
+clavier.cpp
+clavier.h
+controleur.cpp
+controleur.h
+main.cpp
+note.cpp
+note.h
+partition.cpp
+partition.h
+touche.cpp
+touche.h
+window.cpp
+window.h
