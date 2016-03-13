@@ -20,6 +20,7 @@ private slots:
 private:
     Clavier *clavier;
     Partition *partition;
+    Controleur *controleur;
 
 };
 

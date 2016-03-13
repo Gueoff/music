@@ -11,8 +11,9 @@ class Parser : public QWidget
 {
     Q_OBJECT
 public:
-    Parser();
+    Parser(QString);
     std::vector<Note *> recupereNote();
+    nom_note transformer(std::string);
 
 private:
     QDomDocument* dom;

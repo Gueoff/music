@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>partitions/partition1.xml</file>
+        <file>partitions/partition2.xml</file>
+    </qresource>
+</RCC>

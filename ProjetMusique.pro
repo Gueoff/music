@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     clavier.cpp \
     touche.cpp \
     window.cpp \
-    controleur.cpp
+    controleur.cpp \
+    parser.cpp
 
 HEADERS  += \
     partition.h \
@@ -26,11 +27,15 @@ HEADERS  += \
     clavier.h \
     touche.h \
     window.h \
-    controleur.h
+    controleur.h \
+    parser.h
 
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    son.qrc
+    sons.qrc \
+    partitions.qrc
 
-DISTFILES += \
+
+DISTFILES +=
+

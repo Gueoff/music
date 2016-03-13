@@ -3,10 +3,11 @@
 #include <QDebug>
 
 using namespace std;
-Parser::Parser()
+Parser::Parser(QString fichier)
 {
-    this->dom = new QDomDocument("partition");
-    QFile xml_doc("partition.xml");
+    this->dom = new QDomDocument(fichier);
+   // QFile xml_doc("partition.xml");
+    QFile xml_doc(":/partitions/"+fichier+".xml");
 
     if(!xml_doc.open(QIODevice::ReadOnly)){
         QMessageBox::warning(this,"Erreur à l'ouverture du document XML","Le document XML n'a pas pu être ouvert. Vérifiez que le nom est le bon et que le document est bien placé");
@@ -29,13 +30,13 @@ vector<Note*> Parser::recupereNote(){
     vector<Note*> res;
     int alteration;
     int octave;
+
     while(!noeud.isNull()){
         elt = noeud.toElement();
         if(!elt.isNull()){
             noeud2 = elt.firstChild();
             if(!noeud2.isNull()){
                 nom = noeud2.toElement().text().toStdString();
-
                 noeud2 = noeud2.nextSibling();
                 if(!noeud2.isNull()){
                     alteration = noeud2.toElement().text().toInt();
@@ -44,7 +45,7 @@ vector<Note*> Parser::recupereNote(){
                     if(!noeud2.isNull()){
                         octave = noeud2.toElement().text().toInt();
 
-                        res.push_back(new Note(nom,alteration,octave));
+                        res.push_back(new Note(transformer(nom),alteration,octave));
                     }
                     else{
                         QMessageBox::warning(this,"Erreur lors de la lecture de l'octave de la note","Impossible de lire la valeur de la note");
@@ -63,11 +64,29 @@ vector<Note*> Parser::recupereNote(){
         }
         noeud = noeud.nextSibling();
     }
-    for (Note* n : res){
-        qDebug() << n->getNom();
-    }
+
+    qDebug() << res.size();
 
     return res;
+}
+
+nom_note Parser::transformer(std::string nom){
+    if(nom == "A")
+        return A;
+    else if(nom == "B")
+        return B;
+    else if(nom == "C")
+        return C;
+    else if(nom == "D")
+        return D;
+    else if(nom == "E")
+        return E;
+    else if(nom == "F")
+        return F;
+    else if(nom == "G")
+        return G;
+
+    return A;
 }
 
 

@@ -3,13 +3,15 @@
 
 Window::Window()
 {
-    Clavier *clavier = new Clavier();
-    Partition *partition = new Partition();
-    Controleur *controleur = new Controleur();
+    this->clavier = new Clavier();
+    this->partition = new Partition();
+    this->controleur = new Controleur();
 
-    QGridLayout *layoutBouton = new QGridLayout;
-    layoutBouton->addWidget(partition, 0, 0);
-    layoutBouton->addWidget(clavier, 1, 0);
-    layoutBouton->addWidget(controleur, 1, 1);
-    this->setLayout(layoutBouton);
+    QGridLayout *layout = new QGridLayout;
+    layout->addWidget(controleur, 0, 0, 2, 1);
+    layout->addWidget(partition, 0, 1, 1, 4);
+    layout->addWidget(clavier, 1, 1, 1, 4);
+
+
+    this->setLayout(layout);
 }

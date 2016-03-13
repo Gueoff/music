@@ -8,6 +8,7 @@ Partition::Partition()
     int interval = 12;
 
     QGridLayout *layout = new QGridLayout;
+    layout->setAlignment(Qt::AlignAbsolute);
 
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);

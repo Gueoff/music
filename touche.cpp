@@ -2,8 +2,6 @@
 
 Touche::Touche()
 {
-    this->setMinimumSize(30,70);
-    this->setMaximumSize(40,80);
 
 }
 

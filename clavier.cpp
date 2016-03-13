@@ -2,6 +2,8 @@
 
 Clavier::Clavier()
 {
+
+    this->setMinimumHeight(400);
     //Création des touches
     //Premier octave
     Note a1(A,1,1);//DO
@@ -11,7 +13,6 @@ Clavier::Clavier()
     Note e1(E,1,1);//SOL
     Note f1(F,1,1);//LA
     Note g1(G,1,1);//SI
-   // Touche *do1 = new Touche(&c1);
     this->do1 = new Touche(&c1);
     this->re1 = new Touche(&d1);
     this->mi1 = new Touche(&e1);
@@ -98,7 +99,7 @@ Clavier::Clavier()
 
     //Placement des touches
     QGridLayout *layoutBouton = new QGridLayout;
-    //layoutBouton->setMargin(100);
+    layoutBouton->setMargin(60);
     layoutBouton->setSpacing(0);
     layoutBouton->setAlignment(Qt::AlignAbsolute);
 
@@ -134,9 +135,6 @@ Clavier::Clavier()
     this->setLayout(layoutBouton);
 }
 
-void Clavier::afficherClavier(){
-
-}
 
 
 
@@ -157,13 +155,13 @@ void Clavier::jouer(int id){
         QSound::play(":/sons/Do1.wav");
         break;
     case 2:
-        QSound::play(":/sons/Do#1.wav");
+        QSound::play(":/sons/Dod1.wav");
         break;
     case 3:
         QSound::play(":/sons/Re1.wav");
         break;
     case 4:
-        QSound::play(":/sons/Re#1.wav");
+        QSound::play(":/sons/Red1.wav");
         break;
     case 5:
         QSound::play(":/sons/Mi1.wav");
@@ -172,19 +170,19 @@ void Clavier::jouer(int id){
         QSound::play(":/sons/Fa1.wav");
         break;
     case 7:
-        QSound::play(":/sons/Fa#1.wav");
+        QSound::play(":/sons/Fad1.wav");
         break;
     case 8:
         QSound::play(":/sons/Sol1.wav");
         break;
     case 9:
-        QSound::play(":/sons/Sol#1.wav");
+        QSound::play(":/sons/Sold1.wav");
         break;
     case 10:
         QSound::play(":/sons/La1.wav");
         break;
     case 11:
-        QSound::play(":/sons/La#1.wav");
+        QSound::play(":/sons/Lad1.wav");
         break;
     case 12:
         QSound::play(":/sons/Si1.wav");
@@ -193,13 +191,13 @@ void Clavier::jouer(int id){
         QSound::play(":/sons/Do2.wav");
         break;
     case 14:
-        QSound::play(":/sons/Do#2.wav");
+        QSound::play(":/sons/Dod2.wav");
         break;
     case 15:
         QSound::play(":/sons/Re2.wav");
         break;
     case 16:
-        QSound::play(":/sons/Re#2.wav");
+        QSound::play(":/sons/Red2.wav");
         break;
     case 17:
         QSound::play(":/sons/Mi2.wav");
@@ -208,19 +206,19 @@ void Clavier::jouer(int id){
         QSound::play(":/sons/Fa2.wav");
         break;
     case 19:
-        QSound::play(":/sons/Fa#2.wav");
+        QSound::play(":/sons/Fad2.wav");
         break;
     case 20:
         QSound::play(":/sons/Sol2.wav");
         break;
     case 21:
-        QSound::play(":/sons/Sol#2.wav");
+        QSound::play(":/sons/Sold2.wav");
         break;
     case 22:
         QSound::play(":/sons/La2.wav");
         break;
     case 23:
-        QSound::play(":/sons/La#2.wav");
+        QSound::play(":/sons/Lad2.wav");
         break;
     case 24:
         QSound::play(":/sons/Si2.wav");

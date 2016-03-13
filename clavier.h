@@ -15,7 +15,6 @@ class Clavier : public QWidget
 
 public:
     Clavier();
-    void afficherClavier();
     void paintEvent(QPaintEvent *);
 private:
     //Premier octave
