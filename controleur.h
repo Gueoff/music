@@ -7,6 +7,7 @@
 #include <QScrollArea>
 #include "parser.h"
 #include "partition.h"
+#include "clavier.h"
 
 
 
@@ -19,6 +20,7 @@ class Controleur : public QWidget
 public:
     Controleur();
     Partition* getPartition(){return this->partition;}
+    Clavier* getClavier(){return this->clavier;}
 public slots:
     void genererPartition(int);
     void changerPartition();
@@ -27,6 +29,7 @@ private:
     bool deplie;
     Parser *parser;
     Partition *partition;
+    Clavier *clavier;
     QGridLayout *layout;
     QPushButton *changer;
     QPushButton *a;

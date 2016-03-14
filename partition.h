@@ -15,7 +15,6 @@ class Partition : public QWidget
     Q_OBJECT
 
 private:
-     QBrush brush;
      std::vector<Note*> liste_notes;
      int interval;
 
@@ -23,7 +22,6 @@ public:
      Partition();
      Partition(std::vector<Note*> liste_notes){this->liste_notes = liste_notes; this->interval = 12;}
      void paintEvent(QPaintEvent *);
-     void setBrush(const QBrush &brush);
      void afficherPortee();
      void afficherNote(Note* ,int);
      void setListeNotes(std::vector<Note*> liste_notes){this->liste_notes = liste_notes;}

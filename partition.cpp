@@ -9,9 +9,7 @@ using namespace std;
 Partition::Partition()
 {
     this->interval = 12;
-
-    QGridLayout *layout = new QGridLayout;
-    layout->setAlignment(Qt::AlignAbsolute);
+    this->setMinimumHeight(500);
 
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);
@@ -23,16 +21,11 @@ Partition::Partition()
     painter.drawLine(5,this->height()/8+4*interval,this->width()-5,this->height()/8+4*interval);
     painter.drawLine(5,this->height()/8+5*interval,this->width()-5,this->height()/8+5*interval);
 
-    layout->addWidget(this);
 }
 
 
 
-void Partition::setBrush(const QBrush &brush)
-{
-    this->brush = brush;
-    update();
-}
+
 
 void Partition::paintEvent(QPaintEvent *)
 {

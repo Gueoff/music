@@ -59,3 +59,10 @@ Note::Note(nom_note nom, int alteration, int octave){
 
 }
 
+bool Note::egale(Note *note){
+    if(this->octave == note->getOctave() && this->alteration == note->getAlteration() && this->nom == note->getNom()){
+        return true;
+    }
+    return false;
+}
+

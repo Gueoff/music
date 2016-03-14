@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>partitions/partition1.xml</file>
         <file>partitions/partition2.xml</file>
+        <file>partitions/partition3.xml</file>
+        <file>partitions/partition4.xml</file>
     </qresource>
 </RCC>

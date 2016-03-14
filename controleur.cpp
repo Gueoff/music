@@ -9,8 +9,9 @@ Controleur::Controleur()
     scroll->setWidget(this);
     scroll->setEnabled(true);
 
-    this->partition = new Partition();
     this->setMinimumWidth(200);
+    this->partition = new Partition();
+    this->clavier = new Clavier();
     this->layout = new QGridLayout;
     layout->setSpacing(0);
     layout->setMargin(10);
@@ -60,13 +61,24 @@ void Controleur::genererPartition(int id){
         this->parser = new Parser("partition1");
         partition->setListeNotes(parser->recupereNote());
         partition->afficherPortee();
-        //partition->show();
         partition->repaint();
-
-
+        this->clavier->setPartition(this->partition);
+        qDebug() << clavier->getPartition()->getListeNotes().size();
         break;
     case 2:
         this->parser = new Parser("partition2");
+        partition->setListeNotes(parser->recupereNote());
+        partition->afficherPortee();
+        partition->repaint();
+        break;
+    case 3:
+        this->parser = new Parser("partition3");
+        partition->setListeNotes(parser->recupereNote());
+        partition->afficherPortee();
+        partition->repaint();
+        break;
+    case 4:
+        this->parser = new Parser("partition4");
         partition->setListeNotes(parser->recupereNote());
         partition->afficherPortee();
         partition->repaint();

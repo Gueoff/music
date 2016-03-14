@@ -1,4 +1,5 @@
 #include "clavier.h"
+#include <QDebug>
 
 Clavier::Clavier()
 {
@@ -6,13 +7,13 @@ Clavier::Clavier()
     this->setMinimumHeight(400);
     //Création des touches
     //Premier octave
-    Note a1(A,1,1);//DO
-    Note b1(B,1,1);//RE
-    Note c1(C,1,1);//MI
-    Note d1(D,1,1);//FA
-    Note e1(E,1,1);//SOL
-    Note f1(F,1,1);//LA
-    Note g1(G,1,1);//SI
+    Note a1(A,1,1);//LA
+    Note b1(B,1,1);//SI
+    Note c1(C,1,1);//DO
+    Note d1(D,1,1);//RE
+    Note e1(E,1,1);//MI
+    Note f1(F,1,1);//FA
+    Note g1(G,1,1);//SOL
     this->do1 = new Touche(&c1);
     this->re1 = new Touche(&d1);
     this->mi1 = new Touche(&e1);
@@ -153,75 +154,114 @@ void Clavier::jouer(int id){
     switch(id){
     case 1:
         QSound::play(":/sons/Do1.wav");
+        this->setSelected(new Note(C,1,1));
+        if(this->selected->egale(this->getPartition()->getListeNotes().at(0))){
+            qDebug() << "ok";
+        }
         break;
     case 2:
         QSound::play(":/sons/Dod1.wav");
+        this->setSelected(new Note(C,2,1));
         break;
     case 3:
         QSound::play(":/sons/Re1.wav");
+        this->setSelected(new Note(D,1,1));
         break;
     case 4:
         QSound::play(":/sons/Red1.wav");
+        this->setSelected(new Note(D,2,1));
         break;
     case 5:
         QSound::play(":/sons/Mi1.wav");
+        this->setSelected(new Note(E,1,1));
         break;
     case 6:
         QSound::play(":/sons/Fa1.wav");
+        this->setSelected(new Note(F,1,1));
         break;
     case 7:
         QSound::play(":/sons/Fad1.wav");
+        this->setSelected(new Note(F,2,1));
         break;
     case 8:
         QSound::play(":/sons/Sol1.wav");
+        this->setSelected(new Note(G,1,1));
         break;
     case 9:
         QSound::play(":/sons/Sold1.wav");
+        this->setSelected(new Note(G,2,1));
         break;
     case 10:
         QSound::play(":/sons/La1.wav");
+        this->setSelected(new Note(A,1,1));
+
+        qDebug() << "avant";
+        qDebug() << selected->getAlteration();
+         qDebug() << selected->getOctave();
+          qDebug() << selected->getNom();
+
+          qDebug() << this->getPartition()->getListeNotes().at(0)->getAlteration();
+           qDebug() << this->getPartition()->getListeNotes().at(0)->getOctave();
+            qDebug() << this->getPartition()->getListeNotes().at(0)->getNom();
+        if(this->selected->egale(this->getPartition()->getListeNotes().at(0))){
+            qDebug() << "ok";
+        }
         break;
     case 11:
         QSound::play(":/sons/Lad1.wav");
+        this->setSelected(new Note(A,2,1));
         break;
     case 12:
         QSound::play(":/sons/Si1.wav");
+        this->setSelected(new Note(B,1,1));
         break;
     case 13:
         QSound::play(":/sons/Do2.wav");
+        this->setSelected(new Note(C,1,2));
         break;
     case 14:
         QSound::play(":/sons/Dod2.wav");
+        this->setSelected(new Note(C,2,2));
         break;
     case 15:
         QSound::play(":/sons/Re2.wav");
+        this->setSelected(new Note(D,1,2));
         break;
     case 16:
         QSound::play(":/sons/Red2.wav");
+        this->setSelected(new Note(D,2,2));
         break;
     case 17:
         QSound::play(":/sons/Mi2.wav");
+        this->setSelected(new Note(E,1,2));
         break;
     case 18:
         QSound::play(":/sons/Fa2.wav");
+        this->setSelected(new Note(F,1,2));
         break;
     case 19:
         QSound::play(":/sons/Fad2.wav");
+        this->setSelected(new Note(F,2,2));
         break;
     case 20:
         QSound::play(":/sons/Sol2.wav");
+        this->setSelected(new Note(G,1,2));
         break;
     case 21:
         QSound::play(":/sons/Sold2.wav");
+        this->setSelected(new Note(G,2,2));
         break;
     case 22:
         QSound::play(":/sons/La2.wav");
+        this->setSelected(new Note(A,1,2));
         break;
     case 23:
         QSound::play(":/sons/Lad2.wav");
+        this->setSelected(new Note(A,2,2));
         break;
     case 24:
         QSound::play(":/sons/Si2.wav");
+        this->setSelected(new Note(B,1,2));
         break;
 
     }

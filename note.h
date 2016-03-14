@@ -23,6 +23,7 @@ public:
     int getOctave(){return this->octave;}
     void setPosition_note(float pos){this->position_note = pos;}
     float getPosition_note(){return this->position_note;}
+    bool egale(Note*);
 
 };
 

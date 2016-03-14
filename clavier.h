@@ -1,21 +1,18 @@
 #ifndef CLAVIER_H
 #define CLAVIER_H
 
-#include <QPainter>
 #include <QWidget>
 #include <QPushButton>
 #include <QGridLayout>
 #include <QButtonGroup>
 #include "touche.h"
+#include "partition.h"
 
 
 class Clavier : public QWidget
 {
     Q_OBJECT
 
-public:
-    Clavier();
-    void paintEvent(QPaintEvent *);
 private:
     //Premier octave
     Touche *do1;
@@ -45,6 +42,16 @@ private:
     Touche *fa22;
     Touche *sol22;
     Touche *la22;
+
+    Note *selected;
+    Partition *partition;
+
+public:
+    Clavier();
+    void paintEvent(QPaintEvent *);
+    void setSelected(Note* note){this->selected = note;}
+    Partition* getPartition(){return this->partition;}
+    void setPartition(Partition* p){this->partition = p;}
 
 public slots:
     void jouer(int);
