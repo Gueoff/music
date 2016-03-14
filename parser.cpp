@@ -6,7 +6,6 @@ using namespace std;
 Parser::Parser(QString fichier)
 {
     this->dom = new QDomDocument(fichier);
-   // QFile xml_doc("partition.xml");
     QFile xml_doc(":/partitions/"+fichier+".xml");
 
     if(!xml_doc.open(QIODevice::ReadOnly)){
@@ -65,7 +64,8 @@ vector<Note*> Parser::recupereNote(){
         noeud = noeud.nextSibling();
     }
 
-    qDebug() << res.size();
+    //qDebug() << res.size();
+    //qDebug() << res.at(0)->getOctave();
 
     return res;
 }

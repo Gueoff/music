@@ -4,8 +4,9 @@
 Window::Window()
 {
     this->clavier = new Clavier();
-    this->partition = new Partition();
+
     this->controleur = new Controleur();
+    this->partition = controleur->getPartition();
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(controleur, 0, 0, 2, 1);

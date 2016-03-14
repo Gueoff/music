@@ -6,6 +6,7 @@
 #include <QButtonGroup>
 #include <QScrollArea>
 #include "parser.h"
+#include "partition.h"
 
 
 
@@ -17,12 +18,15 @@ class Controleur : public QWidget
 
 public:
     Controleur();
+    Partition* getPartition(){return this->partition;}
 public slots:
     void genererPartition(int);
     void changerPartition();
+
 private:
     bool deplie;
     Parser *parser;
+    Partition *partition;
     QGridLayout *layout;
     QPushButton *changer;
     QPushButton *a;

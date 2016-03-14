@@ -16,15 +16,18 @@ class Partition : public QWidget
 
 private:
      QBrush brush;
-     std::vector<Note> liste_notes;
-     void positionNote(Note *note);
+     std::vector<Note*> liste_notes;
+     int interval;
 
 public:
-    Partition();
-    void paintEvent(QPaintEvent *);
-    void setBrush(const QBrush &brush);
-    void afficherPortee();
-
+     Partition();
+     Partition(std::vector<Note*> liste_notes){this->liste_notes = liste_notes; this->interval = 12;}
+     void paintEvent(QPaintEvent *);
+     void setBrush(const QBrush &brush);
+     void afficherPortee();
+     void afficherNote(Note* ,int);
+     void setListeNotes(std::vector<Note*> liste_notes){this->liste_notes = liste_notes;}
+     std::vector<Note*> getListeNotes(){ return this->liste_notes;}
 
 };
 

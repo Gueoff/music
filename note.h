@@ -10,6 +10,7 @@ private:
     nom_note nom;
     int alteration;
     int octave;
+    float position_note;
 
 public:
     Note();
@@ -20,6 +21,8 @@ public:
     int getAlteration(){return this->alteration;}
     void setOctave(int octave){this->octave = octave;}
     int getOctave(){return this->octave;}
+    void setPosition_note(float pos){this->position_note = pos;}
+    float getPosition_note(){return this->position_note;}
 
 };
 

@@ -1,15 +1,21 @@
 #include "controleur.h"
 
+#include <QDebug>
+
+
 Controleur::Controleur()
 {
     QScrollArea *scroll = new QScrollArea;
     scroll->setWidget(this);
     scroll->setEnabled(true);
 
+    this->partition = new Partition();
+    this->setMinimumWidth(200);
     this->layout = new QGridLayout;
     layout->setSpacing(0);
     layout->setMargin(10);
     layout->setAlignment(Qt::AlignTop);
+
 
     this->setStyleSheet ("QPushButton {"
                             "width:50%;"
@@ -52,11 +58,18 @@ void Controleur::genererPartition(int id){
     switch(id){
     case 1:
         this->parser = new Parser("partition1");
-        parser->recupereNote();
+        partition->setListeNotes(parser->recupereNote());
+        partition->afficherPortee();
+        //partition->show();
+        partition->repaint();
+
+
         break;
     case 2:
         this->parser = new Parser("partition2");
-        parser->recupereNote();
+        partition->setListeNotes(parser->recupereNote());
+        partition->afficherPortee();
+        partition->repaint();
         break;
     }
 }
@@ -92,33 +105,6 @@ void Controleur::changerPartition(){
         layout->removeWidget(d);
         deplie = false;
     }
-
-
-    /*
-    QFile fichier(":/partitions/premiere.txt");
-    QString texte;
-    if(fichier.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QTextStream flux(&fichier);
-
-        while(!flux.atEnd()){
-            std::cout << "dans while" << std::endl;
-            texte = flux.readLine();
-            QPushButton* a = new QPushButton();
-            a->setText(texte);
-            layout->addWidget(a, 0, 0);
-
-        }
-
-        fichier.close();
-    }
-
-    else{
-    texte = "Impossible d'ouvrir le fichier !";
-    QPushButton* a = new QPushButton();
-    a->setText(texte);
-    layout->addWidget(a, 1, 0);
-    }
-*/
 
 
 }
