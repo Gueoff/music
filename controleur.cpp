@@ -27,6 +27,7 @@ Controleur::Controleur()
                             "padding:3%;"
                             "margin:0%;"
                             "text-align: top;"
+                            "font-size: 15px;"
                           "}"
                             "QPushButton:hover {"
                             "background-color:rgb(240,240,240);"
@@ -38,8 +39,6 @@ Controleur::Controleur()
 
     layout->addWidget(changer, 0, 0);
     changerPartition();
-
-
 
     this->setLayout(layout);
 }
@@ -56,34 +55,30 @@ void Controleur::genererPartition(int id){
     layout->removeWidget(d);
     deplie = false;
 
+
     switch(id){
     case 1:
         this->parser = new Parser("partition1");
         partition->setListeNotes(parser->recupereNote());
-        partition->afficherPortee();
-        partition->repaint();
-        this->clavier->setPartition(this->partition);
-        qDebug() << clavier->getPartition()->getListeNotes().size();
         break;
     case 2:
         this->parser = new Parser("partition2");
         partition->setListeNotes(parser->recupereNote());
-        partition->afficherPortee();
-        partition->repaint();
         break;
     case 3:
         this->parser = new Parser("partition3");
         partition->setListeNotes(parser->recupereNote());
-        partition->afficherPortee();
-        partition->repaint();
         break;
     case 4:
         this->parser = new Parser("partition4");
         partition->setListeNotes(parser->recupereNote());
-        partition->afficherPortee();
-        partition->repaint();
         break;
     }
+
+    clavier->getNotesJoues().clear();
+    partition->setPointeur(0);
+    partition->afficherPortee();
+    partition->repaint();
 }
 
 void Controleur::changerPartition(){

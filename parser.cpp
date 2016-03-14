@@ -1,7 +1,5 @@
 #include "parser.h"
 
-#include <QDebug>
-
 using namespace std;
 Parser::Parser(QString fichier)
 {

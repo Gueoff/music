@@ -17,15 +17,17 @@ class Partition : public QWidget
 private:
      std::vector<Note*> liste_notes;
      int interval;
-
+     int pointeur;
 public:
      Partition();
-     Partition(std::vector<Note*> liste_notes){this->liste_notes = liste_notes; this->interval = 12;}
      void paintEvent(QPaintEvent *);
      void afficherPortee();
-     void afficherNote(Note* ,int);
+     void afficherNote(Note*, int, int);
      void setListeNotes(std::vector<Note*> liste_notes){this->liste_notes = liste_notes;}
      std::vector<Note*> getListeNotes(){ return this->liste_notes;}
+     void setPointeur(int pointeur){this->pointeur = pointeur;}
+     int getPointeur(){return this->pointeur;}
+     void avancer();
 
 };
 

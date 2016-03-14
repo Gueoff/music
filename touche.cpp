@@ -8,41 +8,41 @@ Touche::Touche()
 Touche::Touche(Note *note){
     this->note = note;
 
-    if(note->getNom() == A && note->getAlteration() == 1){
+    if(note->getNom() == A && note->getAlteration() == 0){
         this->setText("La");
     }
-    else if(note->getNom() == B && note->getAlteration() == 1){
+    else if(note->getNom() == B && note->getAlteration() == 0){
         this->setText("Si");
     }
-    else if(note->getNom() == C && note->getAlteration() == 1){
+    else if(note->getNom() == C && note->getAlteration() == 0){
         this->setText("Do");
     }
-    else if(note->getNom() == D && note->getAlteration() == 1){
+    else if(note->getNom() == D && note->getAlteration() == 0){
         this->setText("Re");
     }
-    else if(note->getNom() == E && note->getAlteration() == 1){
+    else if(note->getNom() == E && note->getAlteration() == 0){
         this->setText("Mi");
     }
-    else if(note->getNom() == F && note->getAlteration() == 1){
+    else if(note->getNom() == F && note->getAlteration() == 0){
         this->setText("Fa");
     }
-    else if(note->getNom() == G && note->getAlteration() == 1){
+    else if(note->getNom() == G && note->getAlteration() == 0){
         this->setText("Sol");
     }
 
-    else if(note->getNom() == C && note->getAlteration() == 2){
+    else if(note->getNom() == C && note->getAlteration() == 1){
         this->setText("Do#");
     }
-    else if(note->getNom() == D && note->getAlteration() == 2){
+    else if(note->getNom() == D && note->getAlteration() == 1){
         this->setText("Re#");
     }
-    else if(note->getNom() == F && note->getAlteration() == 2){
+    else if(note->getNom() == F && note->getAlteration() == 1){
         this->setText("Fa#");
     }
-    else if(note->getNom() == G && note->getAlteration() == 2){
+    else if(note->getNom() == G && note->getAlteration() == 1){
         this->setText("Sol#");
     }
-    else if(note->getNom() == A && note->getAlteration() == 2){
+    else if(note->getNom() == A && note->getAlteration() == 1){
         this->setText("La#");
     }
 
@@ -50,7 +50,7 @@ Touche::Touche(Note *note){
 
 
     //Blanches
-    if(note->getAlteration() == 1){
+    if(note->getAlteration() == 0){
         this->setStyleSheet ("QPushButton {"
                                 "background-color : white;"
                                 "border : 1px solid black;"
@@ -69,7 +69,7 @@ Touche::Touche(Note *note){
     }
 
     //Noires
-    else if(note->getAlteration() == 2){
+    else if(note->getAlteration() == 1){
         this->setStyleSheet ("QPushButton {"
                                 "background-color : black;"
                                 "border : 1px solid grey;"

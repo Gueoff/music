@@ -3,13 +3,19 @@
 <partition>
 
 <note>
-<valeur>D</valeur>
+<valeur>C</valeur>
 <alteration>0</alteration>
 <octave>1</octave>
 </note>
 
 <note>
-<valeur>D</valeur>
+<valeur>C</valeur>
+<alteration>0</alteration>
+<octave>1</octave>
+</note>
+
+<note>
+<valeur>C</valeur>
 <alteration>0</alteration>
 <octave>1</octave>
 </note>
@@ -27,7 +33,13 @@
 </note>
 
 <note>
-<valeur>F</valeur>
+<valeur>D</valeur>
+<alteration>0</alteration>
+<octave>1</octave>
+</note>
+
+<note>
+<valeur>C</valeur>
 <alteration>0</alteration>
 <octave>1</octave>
 </note>
@@ -45,25 +57,13 @@
 </note>
 
 <note>
-<valeur>F</valeur>
-<alteration>0</alteration>
-<octave>1</octave>
-</note>
-
-<note>
-<valeur>E</valeur>
-<alteration>0</alteration>
-<octave>1</octave>
-</note>
-
-<note>
-<valeur>E</valeur>
-<alteration>0</alteration>
-<octave>1</octave>
-</note>
-
-<note>
 <valeur>D</valeur>
+<alteration>0</alteration>
+<octave>1</octave>
+</note>
+
+<note>
+<valeur>C</valeur>
 <alteration>0</alteration>
 <octave>1</octave>
 </note>
