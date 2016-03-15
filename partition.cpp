@@ -8,6 +8,7 @@ using namespace std;
 
 Partition::Partition()
 {
+    this->score =new Score();
     this->interval = 12;
     this->setMinimumHeight(500);
 }
@@ -46,6 +47,13 @@ void Partition::afficherPortee(){
              afficherNote(liste_notes.at(i),i+1, 1);
         }
     }
+
+/*
+    if(this->pointeur == this->liste_notes.size() && this->liste_notes.size() != 0){
+        qDebug() << "hey";
+        layout->addWidget(this->score, 1, 1);
+    }
+*/
 }
 
 void Partition::afficherNote(Note* n, int pos, int etat){
@@ -77,4 +85,8 @@ void Partition::afficherNote(Note* n, int pos, int etat){
 
 void Partition::avancer(){
     this->pointeur++;
+}
+
+void Partition::afficherScores(){
+
 }

@@ -5,6 +5,7 @@
 #include "clavier.h"
 #include "partition.h"
 #include "controleur.h"
+#include "score.h"
 
 class Window : public QWidget
 {
@@ -21,7 +22,7 @@ private:
     Clavier *clavier;
     Partition *partition;
     Controleur *controleur;
-
+    Score *score;
 };
 
 #endif // WINDOW_H

@@ -98,7 +98,7 @@ Clavier::Clavier()
     connect(groupe, SIGNAL(buttonClicked(int)), this, SLOT(jouer(int)));
 
     //Placement des touches
-    QGridLayout *layoutBouton = new QGridLayout;
+    this->layoutBouton = new QGridLayout;
     layoutBouton->setMargin(60);
     layoutBouton->setSpacing(0);
     layoutBouton->setAlignment(Qt::AlignAbsolute);
@@ -254,11 +254,19 @@ void Clavier::jouer(int id){
     this->notes_joues.push_back(selected);
     this->getPartition()->avancer();
 
+    //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
-        this->getPartition()->setPointeur(0);
         qDebug() << "arret";
-    }
+        //Affichage du score
+        Score *score = new Score(this->getPartition()->getListeNotes(), this->notes_joues);
+        score->log();
+        this->partition->setScore(score);
+        //On cache le clavier
+        this->hide();
 
-    this->getPartition()->afficherPortee();
+        //this->getPartition()->setPointeur(0);
+    }
+    this->getPartition()->show();
     this->getPartition()->repaint();
+
 }

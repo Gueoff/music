@@ -1,5 +1,7 @@
 #include "parser.h"
 
+#include <QDebug>
+
 using namespace std;
 Parser::Parser(QString fichier)
 {
@@ -63,7 +65,6 @@ vector<Note*> Parser::recupereNote(){
     }
 
     //qDebug() << res.size();
-    //qDebug() << res.at(0)->getOctave();
 
     return res;
 }

@@ -76,8 +76,9 @@ void Controleur::genererPartition(int id){
     }
 
     clavier->getNotesJoues().clear();
+    clavier->setVisible(true);
     partition->setPointeur(0);
-    partition->afficherPortee();
+    partition->show();
     partition->repaint();
 }
 

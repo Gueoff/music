@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     touche.cpp \
     window.cpp \
     controleur.cpp \
-    parser.cpp
+    parser.cpp \
+    score.cpp
 
 HEADERS  += \
     partition.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     touche.h \
     window.h \
     controleur.h \
-    parser.h
+    parser.h \
+    score.h
 
 FORMS    += mainwindow.ui
 
@@ -37,5 +39,5 @@ RESOURCES += \
     partitions.qrc
 
 
-DISTFILES +=
+DISTFILES += \
 
