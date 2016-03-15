@@ -8,7 +8,6 @@ using namespace std;
 
 Partition::Partition()
 {
-    this->score =new Score();
     this->interval = 12;
     this->setMinimumHeight(500);
 }
@@ -96,6 +95,3 @@ void Partition::avancer(){
     this->pointeur++;
 }
 
-void Partition::afficherScores(){
-
-}

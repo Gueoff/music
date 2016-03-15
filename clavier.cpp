@@ -257,14 +257,7 @@ void Clavier::jouer(int id){
     //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
         qDebug() << "arret";
-        //Affichage du score
-        Score *score = new Score(this->getPartition()->getListeNotes(), this->notes_joues);
-        score->log();
-        this->partition->setScore(score);
-        //On cache le clavier
-        this->hide();
 
-        //this->getPartition()->setPointeur(0);
     }
     this->getPartition()->show();
     this->getPartition()->repaint();
