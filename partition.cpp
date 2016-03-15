@@ -16,6 +16,7 @@ Partition::Partition()
 void Partition::paintEvent(QPaintEvent *)
 {
     afficherPortee();
+
 }
 
 
@@ -33,11 +34,13 @@ void Partition::afficherPortee(){
     painter.drawLine(5,this->height()/8+3*interval,this->width()-5,this->height()/8+3*interval);
     painter.drawLine(5,this->height()/8+4*interval,this->width()-5,this->height()/8+4*interval);
     painter.drawLine(5,this->height()/8+5*interval,this->width()-5,this->height()/8+5*interval);
-
+    painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
+    painter.drawLine(this->width()-5,this->height()/8+interval+1,this->width()-5,this->height()/8+5*interval-1);
+    painter.drawLine(this->width()-10,this->height()/8+interval+1,this->width()-10,this->height()/8+5*interval-1);
     layout->addWidget(this);
 
-
-    for (unsigned int i = 0; i<this->liste_notes.size();++i){
+    unsigned int i;
+    for (i = 0; i<this->liste_notes.size();++i){
         //Note actuelle
         if(this->pointeur == i){
             afficherNote(liste_notes.at(i),i+1, 2);
@@ -48,12 +51,6 @@ void Partition::afficherPortee(){
         }
     }
 
-/*
-    if(this->pointeur == this->liste_notes.size() && this->liste_notes.size() != 0){
-        qDebug() << "hey";
-        layout->addWidget(this->score, 1, 1);
-    }
-*/
 }
 
 void Partition::afficherNote(Note* n, int pos, int etat){
@@ -67,19 +64,31 @@ void Partition::afficherNote(Note* n, int pos, int etat){
     painter.setPen(Qt::black);
     painter.setBrush(Qt::black);
 
-    //Autres notes
-    if(etat == 1){
+
+
         painter.drawEllipse(position,centre,circonference,circonference);
-        painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
-    }
+       // painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
+
     //Note en train d'etre jouée
-    else if(etat == 2){
-        painter.drawEllipse(position,centre,circonference,circonference);
-        painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
+    if(etat == 2){
         painter.setPen(Qt::green);
         painter.drawLine(position+circonference/2,this->height()/8-this->interval , position+circonference/2,this->height()/8+7*this->interval );
 
     }
+    if((n->getNom() == C &&n->getOctave() == 1) ||( n->getNom() == A && n->getOctave() == 2)){
+            painter.setPen(Qt::black);
+            painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
+
+        }
+        if(n->getNom()==B && n->getOctave() == 2){
+            painter.setPen(Qt::black);
+            painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
+
+        }
+        painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
+        if (pos % 4 ==0){
+            painter.drawLine(position+25,this->height()/8+interval+1,position+25,this->height()/8+5*interval-1);
+        }
 
 }
 
