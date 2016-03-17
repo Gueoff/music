@@ -4,6 +4,7 @@
 Score::Score()
 {
     this->setVisible(false);
+    nbErreur = 0;
 }
 
 
@@ -22,15 +23,29 @@ void Score::afficherScore(std::vector<Note*> notes_partition, std::vector<Note*>
 
 }
 
+std::vector<int> Score::calculErreur(std::vector<Note *> notes_partition, std::vector<Note *> notes_clavier){
+    std::vector<int> res;
+    for(unsigned int i=0;i<notes_clavier.size();++i ){
+        if (!notes_partition.at(i)->egale(notes_clavier.at(i))){
+           res.push_back(i);
+        }
+    }
+    this->nbErreur = res.size();
+    return res;
+}
+
 void Score::log(){
-    QFile file("log.txt");
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+    QFile file("log/log.txt");
+    if (!file.open(QIODevice::Text | QIODevice::Append))
        return;
 
     QTextStream out(&file);
-    out << "Le Texte écrit dans le out.txt";
+    out << "Nombre d'erreur:"<<nbErreur<<endl;
+
 
 }
+
+
 
 
 

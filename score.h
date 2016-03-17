@@ -21,10 +21,13 @@ class Score : public QWidget
 private:
     std::vector<Note*> notes_partition;
     std::vector<Note*> notes_clavier;
+
+    int nbErreur;
 public:
     Score();
     void afficherScore(std::vector<Note*>, std::vector<Note*>);
     void log();
+    std::vector<int> calculErreur(std::vector<Note*>, std::vector<Note*>);
 
 public slots:
    // void retour();
