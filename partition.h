@@ -5,6 +5,9 @@
 #include <QBrush>
 #include <QWidget>
 #include <QGridLayout>
+#include <QLabel>
+#include <QPixmap>
+#include <QPushButton>
 #include <vector>
 #include "note.h"
 

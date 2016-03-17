@@ -268,12 +268,10 @@ void Clavier::jouer(int id){
     //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
         qDebug() << "arret";
-
-        this->r->setNote(this->notes_joues,this->partition->getListeNotes());
-
         this->partition->hide();
-        r->repaint();
-
+        this->r->setNote(this->notes_joues,this->partition->getListeNotes());
+        this->r->setVisible(true);
+        this->r->repaint();
 
     }
 

@@ -5,6 +5,12 @@
 #include <QGridLayout>
 #include <QButtonGroup>
 #include <QScrollArea>
+#include <QDir>
+#include <QDebug>
+#include <QStringList>
+#include <QDirIterator>
+#include <QString>
+#include <QScrollBar>
 #include "parser.h"
 #include "partition.h"
 #include "clavier.h"
@@ -13,7 +19,7 @@
 
 using namespace std;
 
-class Controleur : public QWidget
+class Controleur : public QScrollArea
 {
     Q_OBJECT
 
@@ -23,7 +29,6 @@ public:
     Clavier* getClavier(){return this->clavier;}
 public slots:
     void genererPartition(int);
-    void changerPartition();
 
 private:
     bool deplie;
@@ -31,11 +36,7 @@ private:
     Partition *partition;
     Clavier *clavier;
     QGridLayout *layout;
-    QPushButton *changer;
-    QPushButton *a;
-    QPushButton *b;
-    QPushButton *c;
-    QPushButton *d;
+    int nombre_partitions;
 };
 
 #endif // CONTROLEUR_H

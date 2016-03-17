@@ -22,6 +22,8 @@ public:
     void afficherNoteJuste(Note* n, int pos);
     void paintEvent(QPaintEvent *);
     void setNote(std::vector<Note*> a,std::vector<Note*> b){this->liste_clavier = a; this->liste_parti = b;}
+    std::vector<Note*> getListeClavier(){return this->liste_clavier;}
+    void vider(){this->liste_clavier.clear(); this->liste_parti.clear();}
 
 signals:
 

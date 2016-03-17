@@ -61,6 +61,8 @@ public:
     std::vector<Note*> getNotesJoues(){ return this->notes_joues;}
     void setNotesJoues(std::vector<Note*> notes_joues){this->notes_joues = notes_joues;}
     void setResultat(Resultat* r){this->r = r;}
+    Resultat* getResultat(){return this->r;}
+    void vider(){this->notes_joues.clear();}
 public slots:
     void jouer(int);
 };

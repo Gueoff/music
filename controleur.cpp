@@ -5,26 +5,25 @@
 
 Controleur::Controleur()
 {
-    QScrollArea *scroll = new QScrollArea;
-    scroll->setWidget(this);
-    scroll->setEnabled(true);
+
 
     this->setMinimumWidth(200);
+    this->setMaximumWidth(200);
     this->partition = new Partition();
     this->clavier = new Clavier();
     this->layout = new QGridLayout;
-    layout->setSpacing(0);
-    layout->setMargin(10);
-    layout->setAlignment(Qt::AlignTop);
+    layout->setMargin(0);
+
+    QWidget *contenu = new QWidget();
+    contenu->setLayout(layout);
+
 
 
     this->setStyleSheet ("QPushButton {"
-                            "width:50%;"
-                            "height:40%;"
-                            "border-top : 1px solid blue;"
-                            "border-bottom : 1px solid blue;"
+                            "border-top : 1px solid black;"
+                            "border-bottom : 0px solid black;"
                             "background-color: white;"
-                            "padding:3%;"
+                            "padding:0%;"
                             "margin:0%;"
                             "text-align: top;"
                             "font-size: 15px;"
@@ -32,87 +31,52 @@ Controleur::Controleur()
                             "QPushButton:hover {"
                             "background-color:rgb(240,240,240);"
                             "}"
+                            "QScrollArea{"
+                                "background-color: white;"
+                            "}"
                          );
 
-    this->changer = new QPushButton("Changer de partition");
-    connect(changer, SIGNAL(clicked()), this, SLOT(changerPartition()) );
+    //Loader de partitions
+    QStringList filtre;
+    filtre << "*.xml";
+    QDirIterator iterateur("../music/partitions/", filtre ,QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    QStringList partitions;
+    int numero_partition = 1;
+    QButtonGroup *groupe = new QButtonGroup;
 
-    layout->addWidget(changer, 0, 0);
-    changerPartition();
+    //On boucle sur les partitions
+    while(iterateur.hasNext())
+    {
+        partitions << iterateur.next();
+        //Création du bouton
+        QString nom_partition = QString("Partition%1").arg(numero_partition);
+        QPushButton *bouton = new QPushButton(nom_partition);
+        bouton->setFixedSize(this->width()-20, 50);
+        groupe->addButton( bouton, numero_partition);
+        //Affichage du bouton
+        layout->addWidget(bouton,numero_partition+1,0);
+        numero_partition++;
+    }
 
-    this->setLayout(layout);
+    this->nombre_partitions = numero_partition;
+    connect(groupe, SIGNAL(buttonClicked(int)), this, SLOT(genererPartition(int)));
+
+    this->setWidget(contenu);
 }
 
 
 void Controleur::genererPartition(int id){
-    a->setVisible(false);
-    b->setVisible(false);
-    c->setVisible(false);
-    d->setVisible(false);
-    layout->removeWidget(a);
-    layout->removeWidget(b);
-    layout->removeWidget(c);
-    layout->removeWidget(d);
-    deplie = false;
 
+    QString nom_partition = QString("partition%1").arg(id);
+    this->parser = new Parser(nom_partition);
+    partition->setListeNotes(parser->recupereNote());
 
-    switch(id){
-    case 1:
-        this->parser = new Parser("partition1");
-        partition->setListeNotes(parser->recupereNote());
-        break;
-    case 2:
-        this->parser = new Parser("partition2");
-        partition->setListeNotes(parser->recupereNote());
-        break;
-    case 3:
-        this->parser = new Parser("partition3");
-        partition->setListeNotes(parser->recupereNote());
-        break;
-    case 4:
-        this->parser = new Parser("partition4");
-        partition->setListeNotes(parser->recupereNote());
-        break;
-    }
-
-    clavier->getNotesJoues().clear();
-    clavier->setVisible(true);
+    clavier->vider();
+    clavier->getResultat()->hide();
+    clavier->getResultat()->vider();
     partition->setPointeur(0);
     partition->show();
     partition->repaint();
 }
 
-void Controleur::changerPartition(){
-    if(!deplie){
-        this->a = new QPushButton("Partition 1");
-        this->b = new QPushButton("Partition 2");
-        this->c = new QPushButton("Partition 3");
-        this->d = new QPushButton("Partition 4");
 
-        QButtonGroup *groupe = new QButtonGroup;
-        groupe->addButton( a, 1);
-        groupe->addButton( b, 2);
-        groupe->addButton( c, 3);
-        groupe->addButton( d, 4);
-        connect(groupe, SIGNAL(buttonClicked(int)), this, SLOT(genererPartition(int)));
-
-        layout->addWidget(a, 1, 0);
-        layout->addWidget(b, 2, 0);
-        layout->addWidget(c, 3, 0);
-        layout->addWidget(d, 4, 0);
-        deplie = true;
-    }
-    else{
-        a->setVisible(false);
-        b->setVisible(false);
-        c->setVisible(false);
-        d->setVisible(false);
-        layout->removeWidget(a);
-        layout->removeWidget(b);
-        layout->removeWidget(c);
-        layout->removeWidget(d);
-        deplie = false;
-    }
-
-
-}

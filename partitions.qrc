@@ -4,5 +4,13 @@
         <file>partitions/partition2.xml</file>
         <file>partitions/partition3.xml</file>
         <file>partitions/partition4.xml</file>
+        <file>partitions/partition5.xml</file>
+        <file>partitions/partition6.xml</file>
+        <file>partitions/partition7.xml</file>
+        <file>partitions/partition8.xml</file>
+        <file>partitions/partition9.xml</file>
+        <file>partitions/partition10.xml</file>
+        <file>partitions/partition11.xml</file>
+        <file>partitions/partition12.xml</file>
     </qresource>
 </RCC>

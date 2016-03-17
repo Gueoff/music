@@ -10,6 +10,7 @@ Resultat::Resultat(QWidget *parent) :
 Resultat::Resultat(std::vector<Note *> liste_clavier, std::vector<Note *> liste_parti){
     this->liste_clavier = liste_clavier;
     this->liste_parti = liste_parti;
+    this->setMinimumHeight(500);
 }
 
 
@@ -19,7 +20,6 @@ void Resultat::paintEvent(QPaintEvent *)
     if(liste_clavier.size() > 0){
         afficherRes();
     }
-
 
 }
 
@@ -33,14 +33,22 @@ void Resultat::afficherRes(){
     painter.setBackgroundMode(Qt::OpaqueMode);
     painter.setPen(Qt::black);
 
-    painter.drawLine(5,this->height()/8+12,this->width()-5,this->height()/8+12);
-    painter.drawLine(5,this->height()/8+2*12,this->width()-5,this->height()/8+2*12);
-    painter.drawLine(5,this->height()/8+3*12,this->width()-5,this->height()/8+3*12);
-    painter.drawLine(5,this->height()/8+4*12,this->width()-5,this->height()/8+4*12);
-    painter.drawLine(5,this->height()/8+5*12,this->width()-5,this->height()/8+5*12);
+    //Lignes horizontales
+    painter.drawLine(100,this->height()/8+12,this->width()-100,this->height()/8+12);
+    painter.drawLine(100,this->height()/8+2*12,this->width()-100,this->height()/8+2*12);
+    painter.drawLine(100,this->height()/8+3*12,this->width()-100,this->height()/8+3*12);
+    painter.drawLine(100,this->height()/8+4*12,this->width()-100,this->height()/8+4*12);
+    painter.drawLine(100,this->height()/8+5*12,this->width()-100,this->height()/8+5*12);
+
+    //Lignes verticales
     painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
-    painter.drawLine(this->width()-5,this->height()/8+12+1,this->width()-5,this->height()/8+5*12-1);
-    painter.drawLine(this->width()-10,this->height()/8+12+1,this->width()-10,this->height()/8+5*12-1);
+    painter.drawLine(100,this->height()/8+12+1,100,this->height()/8+5*12-1);
+    painter.drawLine(this->width()/4+50,this->height()/8+12+1,this->width()/4+50,this->height()/8+5*12-1);
+    painter.drawLine(this->width()/2,this->height()/8+12+1,this->width()/2,this->height()/8+5*12-1);
+    painter.drawLine(this->width()/2+this->width()/4-50,this->height()/8+12+1,this->width()/2+this->width()/4-50,this->height()/8+5*12-1);
+    painter.drawLine(this->width()-100,this->height()/8+12+1,this->width()-100,this->height()/8+5*12-1);
+    painter.drawLine(this->width()-105,this->height()/8+12+1,this->width()-105,this->height()/8+5*12-1);
+
     layout->addWidget(this);
 
     for(unsigned j=0;j<res.size();++j){
@@ -60,41 +68,30 @@ void Resultat::afficherRes(){
 
     }
 
-
 }
 
 void Resultat::afficherNoteFaute(Note* n, int pos){
 
     float centre = (this->height()/8)+(n->getPosition_note()*12);
     float circonference =12;
-    //float taille = 2.20*circonference;
-    float position = pos*35;
+    float position = pos*45 + 90;
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);
     painter.setPen(Qt::red);
     painter.setBrush(Qt::red);
 
-
-
-        painter.drawEllipse(position,centre,circonference,circonference);
-       // painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
-
-
+    painter.drawEllipse(position,centre,circonference,circonference);
 
     if((n->getNom() == C &&n->getOctave() == 1) ||( n->getNom() == A && n->getOctave() == 2)){
             painter.setPen(Qt::black);
             painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
 
-        }
-        if(n->getNom()==B && n->getOctave() == 2){
+    }
+    if(n->getNom()==B && n->getOctave() == 2){
             painter.setPen(Qt::black);
             painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
 
-        }
-        painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
-        if (pos % 4 ==0){
-            painter.drawLine(position+25,this->height()/8+12+1,position+25,this->height()/8+5*12-1);
-        }
+    }
 
 }
 
