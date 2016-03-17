@@ -47,19 +47,16 @@ private:
     Note *selected;
     Partition *partition;
     std::vector<Note*> notes_joues;
-
     Resultat* r;
     Score s;
 
 
 public:
     Clavier();
-    void paintEvent(QPaintEvent *);
     void setSelected(Note* note){this->selected = note;}
     Partition* getPartition(){return this->partition;}
     void setPartition(Partition* p){this->partition = p;}
     std::vector<Note*> getNotesJoues(){ return this->notes_joues;}
-    void setNotesJoues(std::vector<Note*> notes_joues){this->notes_joues = notes_joues;}
     void setResultat(Resultat* r){this->r = r;}
     Resultat* getResultat(){return this->r;}
     void vider(){this->notes_joues.clear();}

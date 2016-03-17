@@ -1,9 +1,10 @@
 #include "clavier.h"
-#include <QDebug>
 
+/**
+ * @brief Clavier::Clavier Constructeur du clavier. Crée et affiche un clavier de piano sur deux octaves.
+ */
 Clavier::Clavier()
 {
-
     this->setMinimumHeight(400);
     //Création des touches
     //Premier octave
@@ -59,10 +60,6 @@ Clavier::Clavier()
     this->fa22 = new Touche(&f22);
     this->sol22 = new Touche(&g22);
     this->la22 = new Touche(&a22);
-
-
-
-
 
     //Action des touches trié par ordre de gauche à droite sur le clavier
     //Premier octave
@@ -133,31 +130,15 @@ Clavier::Clavier()
     layoutBouton->addWidget(la22, 0, 38, 1, 2);
 
     this->setLayout(layoutBouton);
-
-   // QGridLayout *l = new QGridLayout();
-   // Partition p = *();
-    //l->addWidget(this->partition);
-
-   // QGridLayout *l2 = new QGridLayout();
-   // l2->addLayout(l,0,0);
-    //l2->addLayout(layoutBouton,1,0);
-
 }
 
-
-
-
-void Clavier::paintEvent(QPaintEvent *)
-{
-
-}
 
 /*!
- * \brief Clavier::jouer joue un son de piano mélodieux
- * \param id l'id de la touche pressée
+ * \brief Clavier::jouer joue un son de piano mélodieux.
+ * \param id l'id de la touche pressée.
  * Les id sont triés de la gauche vers la droite selon le clavier, DO=1, DO#=2, RE=3...
+ * Déclenche le signal d'arret de jeu et d'affichage des scores lorsqu'on a fini la partition.
  */
-
 void Clavier::jouer(int id){
     switch(id){
     case 1:
@@ -256,27 +237,19 @@ void Clavier::jouer(int id){
         QSound::play(":/sons/Si2.wav");
         this->setSelected(new Note(B,0,2));
         break;
-
     }
-
 
     this->notes_joues.push_back(selected);
     this->getPartition()->avancer();
 
-
-
     //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
-        qDebug() << "arret";
         this->partition->hide();
+        this->r->setNom(this->partition->getNom());
         this->r->setNote(this->notes_joues,this->partition->getListeNotes());
         this->r->setVisible(true);
         this->r->repaint();
-
     }
 
     this->getPartition()->repaint();
-
-
-
 }

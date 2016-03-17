@@ -1,31 +1,38 @@
 #include "partition.h"
 #include <iostream>
-#include <QDebug>
-
 
 using namespace std;
 
-
+/**
+ * @brief Partition::Partition Constructeur d'une partition.
+ */
 Partition::Partition()
 {
     this->interval = 12;
     this->setMinimumHeight(500);
 }
 
+/**
+ * @brief Partition::paintEvent Appelle le dessin de partition.
+ */
 void Partition::paintEvent(QPaintEvent *)
 {
     afficherPortee();
-
 }
 
 
+/**
+ * @brief Partition::afficherPortee Dessine une partition dans le QWidget.
+ * Affiche également les notes d'une partition s'il y en a.
+ */
 void Partition::afficherPortee(){
 
     QGridLayout *layout = new QGridLayout;
     layout->setAlignment(Qt::AlignAbsolute);
 
     QPainter painter(this);
-    painter.setBackgroundMode(Qt::OpaqueMode);
+    //painter.setBackgroundMode(Qt::OpaqueMode);
+    painter.setBackgroundMode(Qt::TransparentMode);
     painter.setPen(Qt::black);
 
     //Lignes horizontales
@@ -45,13 +52,16 @@ void Partition::afficherPortee(){
     painter.drawLine(this->width()-105,this->height()/8+interval+1,this->width()-105,this->height()/8+5*interval-1);
 
     layout->addWidget(this);
+
     //Cle de sol
     QLabel  *label  = new QLabel;
     QPixmap *cle = new QPixmap("../music/sol.png");
     label->setPixmap(*cle);
     layout->addWidget(new QPushButton("hey"));
-
-
+    //Titre de la partition
+    QLabel *titre = new QLabel;
+    titre->setText(this->nom);
+    layout->addWidget(titre);
 
 
     unsigned int i;
@@ -68,20 +78,24 @@ void Partition::afficherPortee(){
 
 }
 
+/**
+ * @brief Partition::afficherNote affiche une note sur la partition.
+ * @param n la note a afficher.
+ * @param pos la position de la note sur la partition.
+ * @param etat 1 si la note est celle à jouer, 2 sinon.
+ */
 void Partition::afficherNote(Note* n, int pos, int etat){
 
     float centre = (this->height()/8)+(n->getPosition_note()*interval);
     float circonference =12;
-    float position = pos*45 + 90;
+    float position = pos*45 + 98;
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);
     painter.setPen(Qt::black);
     painter.setBrush(Qt::black);
 
-
-
-        painter.drawEllipse(position,centre,circonference,circonference);
-       // painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
+    painter.drawEllipse(position,centre,circonference,circonference);
+    // painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
 
     //Note en train d'etre jouée
     if(etat == 2){
@@ -90,18 +104,18 @@ void Partition::afficherNote(Note* n, int pos, int etat){
 
     }
     if((n->getNom() == C &&n->getOctave() == 1) ||( n->getNom() == A && n->getOctave() == 2)){
-            painter.setPen(Qt::black);
-            painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
-
-        }
-        if(n->getNom()==B && n->getOctave() == 2){
-            painter.setPen(Qt::black);
-            painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
-
-        }
-
+        painter.setPen(Qt::black);
+        painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
+    }
+    if(n->getNom()==B && n->getOctave() == 2){
+        painter.setPen(Qt::black);
+        painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
+    }
 }
 
+/**
+ * @brief Partition::avancer fait avancer le pointeur de la note à jouer.
+ */
 void Partition::avancer(){
     this->pointeur++;
 }

@@ -2,7 +2,6 @@
 #define TOUCHE_H
 
 #include <QPushButton>
-#include <QPalette>
 #include<QSound>
 #include "note.h"
 

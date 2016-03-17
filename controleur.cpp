@@ -1,23 +1,18 @@
 #include "controleur.h"
 
-#include <QDebug>
-
-
+/**
+ * @brief Controleur::Controleur Constructeur du controleur.
+ */
 Controleur::Controleur()
 {
-
-
     this->setMinimumWidth(200);
     this->setMaximumWidth(200);
     this->partition = new Partition();
     this->clavier = new Clavier();
     this->layout = new QGridLayout;
     layout->setMargin(0);
-
     QWidget *contenu = new QWidget();
     contenu->setLayout(layout);
-
-
 
     this->setStyleSheet ("QPushButton {"
                             "border-top : 1px solid black;"
@@ -30,9 +25,6 @@ Controleur::Controleur()
                           "}"
                             "QPushButton:hover {"
                             "background-color:rgb(240,240,240);"
-                            "}"
-                            "QScrollArea{"
-                                "background-color: white;"
                             "}"
                          );
 
@@ -64,16 +56,20 @@ Controleur::Controleur()
     this->setWidget(contenu);
 }
 
-
+/**
+ * @brief Controleur::genererPartition Loade la partition selon l'id du bouton
+ * @param id le numero du bouton sur lequel on a appuyé.
+ */
 void Controleur::genererPartition(int id){
 
     QString nom_partition = QString("partition%1").arg(id);
     this->parser = new Parser(nom_partition);
-    partition->setListeNotes(parser->recupereNote());
 
     clavier->vider();
     clavier->getResultat()->hide();
     clavier->getResultat()->vider();
+    partition->setListeNotes(parser->recupereNote());
+    partition->setNom(nom_partition);
     partition->setPointeur(0);
     partition->show();
     partition->repaint();

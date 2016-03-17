@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     window.cpp \
     controleur.cpp \
     parser.cpp \
-    score.cpp
+    score.cpp \
+    resultat.cpp
 
 HEADERS  += \
     partition.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     window.h \
     controleur.h \
     parser.h \
-    score.h
+    score.h \
+    resultat.h
 
 FORMS    += mainwindow.ui
 

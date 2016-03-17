@@ -9,6 +9,10 @@
 #include <QPixmap>
 #include <QPushButton>
 #include <vector>
+
+#include <QString>
+#include <string.h>
+
 #include "note.h"
 
 
@@ -21,6 +25,7 @@ private:
      std::vector<Note*> liste_notes;
      int interval;
      int pointeur;
+     QString nom;
 public:
      Partition();
      void paintEvent(QPaintEvent *);
@@ -30,6 +35,8 @@ public:
      std::vector<Note*> getListeNotes(){ return this->liste_notes;}
      void setPointeur(int pointeur){this->pointeur = pointeur;}
      int getPointeur(){return this->pointeur;}
+     void setNom(QString nom){this->nom = nom;}
+     QString getNom(){return this->nom;}
      void avancer();
 };
 

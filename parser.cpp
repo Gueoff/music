@@ -1,8 +1,12 @@
 #include "parser.h"
 
-#include <QDebug>
-
 using namespace std;
+
+/**
+ * @brief Parser::Parser Constructeur du parser.
+ * @param fichier le fichier à loader.
+ * Doit prendre un fichier XML en entrée selon les conventions de note.
+ */
 Parser::Parser(QString fichier)
 {
     this->dom = new QDomDocument(fichier);
@@ -18,8 +22,12 @@ Parser::Parser(QString fichier)
         return;
     }
     xml_doc.close();
-
 }
+
+/**
+ * @brief Parser::recupereNote
+ * @return un vecteur de notes parsé à partir d'un fichier XML.
+ */
 vector<Note*> Parser::recupereNote(){
     QDomElement dom_element = this->dom->documentElement();
     QDomNode noeud = dom_element.firstChild();
@@ -64,11 +72,14 @@ vector<Note*> Parser::recupereNote(){
         noeud = noeud.nextSibling();
     }
 
-    //qDebug() << res.size();
-
     return res;
 }
 
+/**
+ * @brief Parser::transformer Transforme les String de nom de note en enum_note.
+ * @param nom le nom de la note en string.
+ * @return le no mde lanote en nom_note.
+ */
 nom_note Parser::transformer(std::string nom){
     if(nom == "A")
         return A;

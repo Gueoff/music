@@ -1,11 +1,12 @@
 #ifndef PARSER_H
 #define PARSER_H
 #include <vector>
-#include "note.h"
 #include <QFile>
 #include <QDomDocument>
 #include <QMessageBox>
 #include <iostream>
+
+#include "note.h"
 
 class Parser : public QWidget
 {

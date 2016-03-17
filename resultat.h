@@ -7,8 +7,10 @@
 #include <QBrush>
 #include <QWidget>
 #include <QGridLayout>
-#include "note.h"
+#include <QString>
 #include <algorithm>
+
+#include "note.h"
 #include "score.h"
 
 class Resultat : public QWidget
@@ -23,16 +25,15 @@ public:
     void paintEvent(QPaintEvent *);
     void setNote(std::vector<Note*> a,std::vector<Note*> b){this->liste_clavier = a; this->liste_parti = b;}
     std::vector<Note*> getListeClavier(){return this->liste_clavier;}
+    void setNom(QString nom){this->nom = nom;}
+    QString getNom(){return this->nom;}
     void vider(){this->liste_clavier.clear(); this->liste_parti.clear();}
-
-signals:
-
-public slots:
 
 private:
     Score sc;
     std::vector<Note*> liste_clavier;
     std::vector<Note*> liste_parti;
+    QString nom;
 };
 
 #endif // RESULTAT_H

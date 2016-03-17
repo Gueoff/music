@@ -1,27 +1,12 @@
 #include "score.h"
-#include <QDebug>
+
+using namespace std;
 
 Score::Score()
 {
-    this->setVisible(false);
     nbErreur = 0;
 }
 
-
-
-void Score::afficherScore(std::vector<Note*> notes_partition, std::vector<Note*> notes_clavier){
-
-    this->notes_partition = notes_partition;
-    this->notes_clavier = notes_clavier;
-    this->setMinimumHeight(200);
-    this->setVisible(true);
-
-    QGridLayout *layout = new QGridLayout;
-    layout->addWidget(new QPushButton("Recommencer"));
-
-    this->setLayout(layout);
-
-}
 
 std::vector<int> Score::calculErreur(std::vector<Note *> notes_partition, std::vector<Note *> notes_clavier){
     std::vector<int> res;
@@ -34,15 +19,15 @@ std::vector<int> Score::calculErreur(std::vector<Note *> notes_partition, std::v
     return res;
 }
 
-void Score::log(){
-    QFile file("log/log.txt");
+void Score::log(QString nom_partition){
+    QFile file("../music/log.txt");
     if (!file.open(QIODevice::Text | QIODevice::Append))
        return;
 
     QTextStream out(&file);
-    out << "Nombre d'erreur:"<<nbErreur<<endl;
-
-
+    out << "Nom de la partition : "<< nom_partition << endl;
+    out << "Nombre d'erreur :     "<< nbErreur << endl;
+    out << "---------------------------------" << endl;
 }
 
 

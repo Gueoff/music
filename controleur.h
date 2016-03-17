@@ -5,12 +5,9 @@
 #include <QGridLayout>
 #include <QButtonGroup>
 #include <QScrollArea>
-#include <QDir>
-#include <QDebug>
 #include <QStringList>
 #include <QDirIterator>
-#include <QString>
-#include <QScrollBar>
+
 #include "parser.h"
 #include "partition.h"
 #include "clavier.h"
