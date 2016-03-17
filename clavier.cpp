@@ -133,6 +133,15 @@ Clavier::Clavier()
     layoutBouton->addWidget(la22, 0, 38, 1, 2);
 
     this->setLayout(layoutBouton);
+
+   // QGridLayout *l = new QGridLayout();
+   // Partition p = *();
+    //l->addWidget(this->partition);
+
+   // QGridLayout *l2 = new QGridLayout();
+   // l2->addLayout(l,0,0);
+    //l2->addLayout(layoutBouton,1,0);
+
 }
 
 
@@ -254,12 +263,22 @@ void Clavier::jouer(int id){
     this->notes_joues.push_back(selected);
     this->getPartition()->avancer();
 
+
+
     //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
         qDebug() << "arret";
 
+        this->r->setNote(this->notes_joues,this->partition->getListeNotes());
+
+        this->partition->hide();
+        r->repaint();
+
+
     }
-    this->getPartition()->show();
+
     this->getPartition()->repaint();
+
+
 
 }

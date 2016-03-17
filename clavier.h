@@ -7,7 +7,7 @@
 #include <QButtonGroup>
 #include "touche.h"
 #include "partition.h"
-
+#include "resultat.h"
 
 class Clavier : public QWidget
 {
@@ -48,6 +48,9 @@ private:
     Partition *partition;
     std::vector<Note*> notes_joues;
 
+    Resultat* r;
+    Score s;
+
 
 public:
     Clavier();
@@ -57,7 +60,7 @@ public:
     void setPartition(Partition* p){this->partition = p;}
     std::vector<Note*> getNotesJoues(){ return this->notes_joues;}
     void setNotesJoues(std::vector<Note*> notes_joues){this->notes_joues = notes_joues;}
-
+    void setResultat(Resultat* r){this->r = r;}
 public slots:
     void jouer(int);
 };
