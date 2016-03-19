@@ -9,6 +9,7 @@ using namespace std;
 Resultat::Resultat(QWidget *parent) :
     QWidget(parent)
 {
+    this->setMinimumHeight(500);
 }
 
 /**
@@ -115,7 +116,7 @@ void Resultat::afficherNoteJuste(Note* n, int pos){
 
     float centre = (this->height()/8)+(n->getPosition_note()*12);
     float circonference =12;
-    float position = pos*35;
+    float position = pos*45 + 98;
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);
     painter.setPen(Qt::darkGreen);

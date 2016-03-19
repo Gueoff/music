@@ -1,5 +1,5 @@
 #include "window.h"
-
+#include <QDebug>
 Window::Window()
 {
     this->resize(1200,500);
@@ -18,7 +18,7 @@ Window::Window()
 
     this->clavier->setResultat(this->resultat);
     this->clavier->setPartition(this->partition);
-
+    resultat->hide();
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(controleur, 0, 0, 2, 1);
     layout->addWidget(partition, 0, 1, 1, 4);

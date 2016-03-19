@@ -1,5 +1,7 @@
 #include "partition.h"
 #include <iostream>
+#include <QDebug>
+#include <QDir>
 
 using namespace std;
 
@@ -27,10 +29,16 @@ void Partition::paintEvent(QPaintEvent *)
  */
 void Partition::afficherPortee(){
 
+
+
     QGridLayout *layout = new QGridLayout;
     layout->setAlignment(Qt::AlignAbsolute);
 
     QPainter painter(this);
+
+
+
+    //painter.drawPixmap(100,this->height()/8+3*interval,10,10,pixmap2);
     //painter.setBackgroundMode(Qt::OpaqueMode);
     painter.setBackgroundMode(Qt::TransparentMode);
     painter.setPen(Qt::black);
