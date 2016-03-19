@@ -31,7 +31,8 @@ Controleur::Controleur()
     //Loader de partitions
     QStringList filtre;
     filtre << "*.xml";
-    QDirIterator iterateur("../music/partitions/", filtre ,QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    QDirIterator iterateur("../IHM/partitions/", filtre ,QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+
     QStringList partitions;
     int numero_partition = 1;
     QButtonGroup *groupe = new QButtonGroup;
@@ -39,6 +40,7 @@ Controleur::Controleur()
     //On boucle sur les partitions
     while(iterateur.hasNext())
     {
+
         partitions << iterateur.next();
         //Création du bouton
         QString nom_partition = QString("Partition%1").arg(numero_partition);

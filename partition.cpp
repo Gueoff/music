@@ -44,15 +44,15 @@ void Partition::afficherPortee(){
     painter.setPen(Qt::black);
 
     //Lignes horizontales
-    painter.drawLine(100,this->height()/8+interval,this->width()-100,this->height()/8+interval);
-    painter.drawLine(100,this->height()/8+2*interval,this->width()-100,this->height()/8+2*interval);
-    painter.drawLine(100,this->height()/8+3*interval,this->width()-100,this->height()/8+3*interval);
-    painter.drawLine(100,this->height()/8+4*interval,this->width()-100,this->height()/8+4*interval);
-    painter.drawLine(100,this->height()/8+5*interval,this->width()-100,this->height()/8+5*interval);
+    painter.drawLine(80,this->height()/8+interval,this->width()-100,this->height()/8+interval);
+    painter.drawLine(80,this->height()/8+2*interval,this->width()-100,this->height()/8+2*interval);
+    painter.drawLine(80,this->height()/8+3*interval,this->width()-100,this->height()/8+3*interval);
+    painter.drawLine(80,this->height()/8+4*interval,this->width()-100,this->height()/8+4*interval);
+    painter.drawLine(80,this->height()/8+5*interval,this->width()-100,this->height()/8+5*interval);
 
     //Lignes verticales
     painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
-    painter.drawLine(100,this->height()/8+interval+1,100,this->height()/8+5*interval-1);
+    //painter.drawLine(80,this->height()/8+interval+1,100,this->height()/8+5*interval-1);
     painter.drawLine(this->width()/4+50,this->height()/8+interval+1,this->width()/4+50,this->height()/8+5*interval-1);
     painter.drawLine(this->width()/2,this->height()/8+interval+1,this->width()/2,this->height()/8+5*interval-1);
     painter.drawLine(this->width()/2+this->width()/4-50,this->height()/8+interval+1,this->width()/2+this->width()/4-50,this->height()/8+5*interval-1);
@@ -62,9 +62,11 @@ void Partition::afficherPortee(){
     layout->addWidget(this);
 
     //Cle de sol
-    QLabel  *label  = new QLabel;
-    QPixmap *cle = new QPixmap("../music/sol.png");
-    label->setPixmap(*cle);
+
+    QPixmap clef( "../IHM/image/clef_sol.png");
+
+    painter.drawPixmap(80,this->height()/8+interval-15,clef.scaled(35,80));
+
     layout->addWidget(new QPushButton("hey"));
     //Titre de la partition
     QLabel *titre = new QLabel;
@@ -118,6 +120,11 @@ void Partition::afficherNote(Note* n, int pos, int etat){
     if(n->getNom()==B && n->getOctave() == 2){
         painter.setPen(Qt::black);
         painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
+    }
+    if(n->getAlteration() == 1){
+         QPixmap diese("../IHM/image/diese.png");
+         painter.drawPixmap(position -20,centre-circonference/2,diese.scaled(10,25));
+
     }
 }
 

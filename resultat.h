@@ -20,7 +20,7 @@ public:
     explicit Resultat(QWidget *parent = 0);
     void afficherRes();
     Resultat(std::vector<Note*> liste_clavier,std::vector<Note*> liste_parti);
-    void afficherNoteFaute(Note* n, int pos);
+    void afficherNote(Note* n, int pos,bool vrai);
     void afficherNoteJuste(Note* n, int pos);
     void paintEvent(QPaintEvent *);
     void setNote(std::vector<Note*> a,std::vector<Note*> b){this->liste_clavier = a; this->liste_parti = b;}

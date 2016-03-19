@@ -38,8 +38,9 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     sons.qrc \
-    partitions.qrc
+    partitions.qrc \
+    image.qrc
 
 
-DISTFILES += \
+DISTFILES +=
 

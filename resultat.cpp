@@ -48,91 +48,86 @@ void Resultat::afficherRes(){
     painter.setPen(Qt::black);
 
     //Lignes horizontales
-    painter.drawLine(100,this->height()/8+12,this->width()-100,this->height()/8+12);
-    painter.drawLine(100,this->height()/8+2*12,this->width()-100,this->height()/8+2*12);
-    painter.drawLine(100,this->height()/8+3*12,this->width()-100,this->height()/8+3*12);
-    painter.drawLine(100,this->height()/8+4*12,this->width()-100,this->height()/8+4*12);
-    painter.drawLine(100,this->height()/8+5*12,this->width()-100,this->height()/8+5*12);
+    painter.drawLine(80,this->height()/8+12,this->width()-100,this->height()/8+12);
+    painter.drawLine(80,this->height()/8+2*12,this->width()-100,this->height()/8+2*12);
+    painter.drawLine(80,this->height()/8+3*12,this->width()-100,this->height()/8+3*12);
+    painter.drawLine(80,this->height()/8+4*12,this->width()-100,this->height()/8+4*12);
+    painter.drawLine(80,this->height()/8+5*12,this->width()-100,this->height()/8+5*12);
 
     //Lignes verticales
     painter.setPen(QPen(Qt::black,2, Qt::SolidLine));
-    painter.drawLine(100,this->height()/8+12+1,100,this->height()/8+5*12-1);
+    //painter.drawLine(100,this->height()/8+12+1,100,this->height()/8+5*12-1);
     painter.drawLine(this->width()/4+50,this->height()/8+12+1,this->width()/4+50,this->height()/8+5*12-1);
     painter.drawLine(this->width()/2,this->height()/8+12+1,this->width()/2,this->height()/8+5*12-1);
     painter.drawLine(this->width()/2+this->width()/4-50,this->height()/8+12+1,this->width()/2+this->width()/4-50,this->height()/8+5*12-1);
     painter.drawLine(this->width()-100,this->height()/8+12+1,this->width()-100,this->height()/8+5*12-1);
     painter.drawLine(this->width()-105,this->height()/8+12+1,this->width()-105,this->height()/8+5*12-1);
 
+    //Cle de sol
+    QPixmap clef( "../IHM/image/clef_sol.png");
+    painter.drawPixmap(80,this->height()/8+12-15,clef.scaled(35,80));
     layout->addWidget(this);
 
     unsigned int i;
     for (i = 0; i<liste_clavier.size();++i){
 
-        if(std::find(res.begin(), res.end(), i) != res.end()) {
-            afficherNoteFaute(liste_clavier.at(i),i+1);
-        } else {
-            afficherNoteJuste(liste_clavier.at(i),i+1);
-        }
-    }
 
+            afficherNote(liste_clavier.at(i),i+1,!(std::find(res.begin(), res.end(), i) != res.end()));
+
+    }
     Score *score = new Score();
     score->calculErreur(this->liste_parti, this->liste_clavier);
     score->log(this->nom);
 }
 
 /**
- * @brief Resultat::afficherNoteFaute Dessine une note male jouée.
+ * @brief Resultat::afficherNote Dessine une note male ou bien jouée.
  * @param n la note à afficher.
  * @param pos la position de la note sur la partition.
  */
-void Resultat::afficherNoteFaute(Note* n, int pos){
+void Resultat::afficherNote(Note* n, int pos,bool vrai){
 
     float centre = (this->height()/8)+(n->getPosition_note()*12);
     float circonference =12;
     float position = pos*45 + 98;
     QPainter painter(this);
     painter.setBackgroundMode(Qt::OpaqueMode);
-    painter.setPen(Qt::red);
-    painter.setBrush(Qt::red);
 
+    if(!vrai){
+        painter.setPen(Qt::red);
+        painter.setBrush(Qt::red);
+    }
+    else{
+        painter.setPen(Qt::darkGreen);
+        painter.setBrush(Qt::darkGreen);
+    }
     painter.drawEllipse(position,centre,circonference,circonference);
 
     if((n->getNom() == C &&n->getOctave() == 1) ||( n->getNom() == A && n->getOctave() == 2)){
-        painter.setPen(Qt::black);
+        if(!vrai){
+            painter.setPen(Qt::red);
+        }
+        else{
+            painter.setPen(Qt::darkGreen);
+        }
+
         painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
     }
     if(n->getNom()==B && n->getOctave() == 2){
-        painter.setPen(Qt::black);
+        if(!vrai){
+            painter.setPen(Qt::red);
+        }
+        else{
+            painter.setPen(Qt::darkGreen);
+        }
         painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
+    }
+    if(n->getAlteration() == 1){
+         QPixmap diese("../IHM/image/diese.png");
+         painter.drawPixmap(position -20,centre-circonference/2,diese.scaled(10,25));
+
     }
 }
 
-/**
- * @brief Resultat::afficherNoteFaute Dessine une note bien jouée.
- * @param n la note à afficher.
- * @param pos la position de la note sur la partition.
- */
-void Resultat::afficherNoteJuste(Note* n, int pos){
 
-    float centre = (this->height()/8)+(n->getPosition_note()*12);
-    float circonference =12;
-    float position = pos*45 + 98;
-    QPainter painter(this);
-    painter.setBackgroundMode(Qt::OpaqueMode);
-    painter.setPen(Qt::darkGreen);
-    painter.setBrush(Qt::darkGreen);
-
-    painter.drawEllipse(position,centre,circonference,circonference);
-    // painter.drawLine(position+circonference,centre+(circonference/2),position+circonference,centre+(circonference/2)-taille);
-
-
-    if((n->getNom() == C &&n->getOctave() == 1) ||( n->getNom() == A && n->getOctave() == 2)){
-        painter.setPen(Qt::black);
-        painter.drawLine(position-8,centre+(circonference/2),position+8+circonference,centre+(circonference/2));
-    }
-    if(n->getNom()==B && n->getOctave() == 2){
-        painter.setPen(Qt::black);
-        painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
-    }
-}
 

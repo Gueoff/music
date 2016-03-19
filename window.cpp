@@ -1,5 +1,6 @@
 #include "window.h"
 #include <QDebug>
+#include <QPixmap>
 Window::Window()
 {
     this->resize(1200,500);
@@ -20,12 +21,10 @@ Window::Window()
     this->clavier->setPartition(this->partition);
     resultat->hide();
     QGridLayout *layout = new QGridLayout;
-    layout->addWidget(controleur, 0, 0, 2, 1);
-    layout->addWidget(partition, 0, 1, 1, 4);
-    layout->addWidget(resultat, 0, 1, 1, 4);
-    layout->addWidget(clavier, 1, 1, 1, 4);
-
-
+ layout->addWidget(controleur, 0, 0, 2, 1);
+ layout->addWidget(partition, 0, 1, 1, 4);
+ layout->addWidget(resultat, 0, 1, 1, 4);
+ layout->addWidget(clavier, 1, 1, 1, 4);
 
     this->setLayout(layout);
 }
