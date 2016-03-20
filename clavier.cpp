@@ -22,7 +22,7 @@ Clavier::Clavier()
     this->sol1 = new Touche(&g1);
     this->la1 = new Touche(&a1);
     this->si1 = new Touche(&b1);
-    //Diez
+    //Diese
     Note c11(C,1,1);
     Note d11(D,1,1);
     Note f11(F,1,1);
@@ -49,7 +49,7 @@ Clavier::Clavier()
     this->sol2 = new Touche(&g2);
     this->la2 = new Touche(&a2);
     this->si2 = new Touche(&b2);
-    //Diez
+    //Diese
     Note c22(C,1,2);
     Note d22(D,1,2);
     Note f22(F,1,2);
@@ -71,7 +71,7 @@ Clavier::Clavier()
     groupe->addButton( this->sol1, 8);
     groupe->addButton( this->la1, 10);
     groupe->addButton( this->si1, 12);
-    //Diez
+    //Diese
     groupe->addButton( this->do11, 2);
     groupe->addButton( this->re11, 4);
     groupe->addButton( this->fa11, 7);
@@ -85,13 +85,14 @@ Clavier::Clavier()
     groupe->addButton( this->sol2, 20);
     groupe->addButton( this->la2, 22);
     groupe->addButton( this->si2, 24);
-    //Diez
+    //Diese
     groupe->addButton( this->do22, 14);
     groupe->addButton( this->re22, 16);
     groupe->addButton( this->fa22, 19);
     groupe->addButton( this->sol22, 21);
     groupe->addButton( this->la22, 23);
 
+    //On lie l'ensemble des boutons créés avec la fonction jouer du clavier
     connect(groupe, SIGNAL(buttonClicked(int)), this, SLOT(jouer(int)));
 
     //Placement des touches
@@ -238,18 +239,21 @@ void Clavier::jouer(int id){
         this->setSelected(new Note(B,0,2));
         break;
     }
-
+    //On insere la note joué par l'utilisateur dans le vecteur notes_joues
     this->notes_joues.push_back(selected);
+    //On avance d'une note dans la partition
     this->getPartition()->avancer();
 
     //Fin du morceau
     if(this->getPartition()->getPointeur() == this->getPartition()->getListeNotes().size()){
+        //On cache la partition de base
         this->partition->hide();
+        //On affiche le resultat de ce que l'utilisateur à joué
         this->r->setNom(this->partition->getNom());
         this->r->setNote(this->notes_joues,this->partition->getListeNotes());
         this->r->setVisible(true);
         this->r->repaint();
     }
-
+    //On "repaint" la partition pour afficher les différentes modification graphiques effectuées pendant la fonction jouer()
     this->getPartition()->repaint();
 }

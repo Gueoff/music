@@ -9,7 +9,7 @@
 #include <QPixmap>
 #include <QPushButton>
 #include <vector>
-
+#include <QFont>
 #include <QString>
 #include <string.h>
 

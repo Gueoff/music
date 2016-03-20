@@ -62,16 +62,18 @@ void Partition::afficherPortee(){
     layout->addWidget(this);
 
     //Cle de sol
-
     QPixmap clef( "../IHM/image/clef_sol.png");
+    painter.drawPixmap(80,this->height()/8+3,clef.scaled(35,80));
 
-    painter.drawPixmap(80,this->height()/8+interval-15,clef.scaled(35,80));
 
-    layout->addWidget(new QPushButton("hey"));
+    //layout->addWidget(new QPushButton("hey"));
+
     //Titre de la partition
-    QLabel *titre = new QLabel;
-    titre->setText(this->nom);
-    layout->addWidget(titre);
+    //QLabel *titre = new QLabel;
+    //qDebug() << this->nom;
+    //titre->setText(this->nom);
+    painter.setFont(QFont("Segoe Print",20));
+    painter.drawText(this->width()/2-50,this->height()/8-35 ,this->nom );
 
 
     unsigned int i;
