@@ -64,16 +64,19 @@ void Resultat::afficherRes(){
     painter.drawLine(this->width()-105,this->height()/8+12+1,this->width()-105,this->height()/8+5*12-1);
 
     //Cle de sol
-    QPixmap clef( "../IHM/image/clef_sol.png");
+    QPixmap clef( "../music/image/clef_sol.png");
     painter.drawPixmap(80,this->height()/8+12-15,clef.scaled(35,80));
+
+    painter.setPen(Qt::red);
+    painter.setFont(QFont("Segoe Print",20));
+    painter.drawText(this->width()/2-150,this->height()/8-35 ,"Correction de la "+this->nom );
+
+
     layout->addWidget(this);
 
     unsigned int i;
-    for (i = 0; i<liste_clavier.size();++i){
-
-
-            afficherNote(liste_clavier.at(i),i+1,!(std::find(res.begin(), res.end(), i) != res.end()));
-
+    for (i = 0; i<liste_parti.size();++i){
+        afficherNote(liste_parti.at(i),i+1,!(std::find(res.begin(), res.end(), i) != res.end()));
     }
     Score *score = new Score();
     score->calculErreur(this->liste_parti, this->liste_clavier);
@@ -123,7 +126,7 @@ void Resultat::afficherNote(Note* n, int pos,bool vrai){
         painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
     }
     if(n->getAlteration() == 1){
-         QPixmap diese("../IHM/image/diese.png");
+         QPixmap diese("../music/image/diese.png");
          painter.drawPixmap(position -20,centre-circonference/2,diese.scaled(10,25));
 
     }

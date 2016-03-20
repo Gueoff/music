@@ -31,7 +31,7 @@ Controleur::Controleur()
     //Loader de partitions
     QStringList filtre;
     filtre << "*.xml";
-    QDirIterator iterateur("../IHM/partitions/", filtre ,QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    QDirIterator iterateur("../music/partitions/", filtre ,QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
 
     QStringList partitions;
     int numero_partition = 1;

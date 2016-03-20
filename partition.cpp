@@ -62,16 +62,9 @@ void Partition::afficherPortee(){
     layout->addWidget(this);
 
     //Cle de sol
-    QPixmap clef( "../IHM/image/clef_sol.png");
+    QPixmap clef( "../music/image/clef_sol.png");
     painter.drawPixmap(80,this->height()/8+3,clef.scaled(35,80));
 
-
-    //layout->addWidget(new QPushButton("hey"));
-
-    //Titre de la partition
-    //QLabel *titre = new QLabel;
-    //qDebug() << this->nom;
-    //titre->setText(this->nom);
     painter.setFont(QFont("Segoe Print",20));
     painter.drawText(this->width()/2-50,this->height()/8-35 ,this->nom );
 
@@ -124,7 +117,7 @@ void Partition::afficherNote(Note* n, int pos, int etat){
         painter.drawLine(position-8,centre+(circonference),position+8+circonference,centre+(circonference));
     }
     if(n->getAlteration() == 1){
-         QPixmap diese("../IHM/image/diese.png");
+         QPixmap diese("../music/image/diese.png");
          painter.drawPixmap(position -20,centre-circonference/2,diese.scaled(10,25));
 
     }
