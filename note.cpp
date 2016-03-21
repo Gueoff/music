@@ -63,6 +63,18 @@ bool Note::egale(Note *note){
     if(this->octave == note->getOctave() && this->alteration == note->getAlteration() && this->nom == note->getNom()){
         return true;
     }
+    if((this->nom == B && this->alteration == 1  && this->octave == 1) && (note->nom == C && note->alteration == 0  && note->octave == 2))
+        return true;
+
+    if(this->octave == note->getOctave() && (this->nom == E && this->alteration == 1) && (note->nom == F && note->alteration == 0))
+        return true;
+
+    if( (note->nom == B && note->alteration == 1 && note->octave == 1) && (this->nom == C && this->alteration == 0 && this->octave == 2))
+        return true;
+
+    if(this->octave == note->getOctave() && (note->nom == E && note->alteration == 1) && (this->nom == F && this->alteration == 0))
+        return true;
+
     return false;
 }
 
